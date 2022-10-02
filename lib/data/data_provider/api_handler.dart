@@ -26,4 +26,15 @@ class ApiProvider extends GetxService {
       rethrow;
     }
   }
+
+  Future<dynamic> getSingleUser(String userId) async {
+    try {
+      dio.Response response = await _dioClient.get(
+        Endpoints.getSingleUser + userId,
+      );
+      return response.data;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

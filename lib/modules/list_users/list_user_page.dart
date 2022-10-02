@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_architect/core/values/enums.dart';
 import 'package:flutter_application_architect/modules/list_users/list_user_controller.dart';
+import 'package:flutter_application_architect/modules/view_single_user/view_single_user_page.dart';
 import 'package:get/get.dart';
 
 class ListUserPage extends StatelessWidget {
@@ -27,6 +28,10 @@ class ListUserPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     var data = controller.listusermodel.value.data![index];
                     return ListTile(
+                      onTap: () {
+                        Get.toNamed(ViewSingleUserPage.routeName,
+                            arguments: data.id ?? "");
+                      },
                       title: Text(data.firstName ?? ""),
                       leading: CircleAvatar(
                         child: Image.network(data.avatar ?? ""),
